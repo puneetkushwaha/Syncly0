@@ -93,8 +93,8 @@ io.on('connection', (socket) => {
   });
 });
 
-const PORT = 3010;
-const HOST = '127.0.0.1';
+const PORT = process.env.PORT || 3010;
+const HOST = '0.0.0.0'; // Bind to all interfaces for Render
 server.listen(PORT, HOST, () => {
-  console.log(`Signaling server running on http://${HOST}:${PORT}`);
+  console.log(`Signaling server running on port ${PORT}`);
 });
