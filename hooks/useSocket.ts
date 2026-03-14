@@ -5,9 +5,8 @@ export const useSocket = (roomId: string, userId: string, userName?: string) => 
   const [socket, setSocket] = useState<Socket | null>(null);
 
   useEffect(() => {
-    // Determine the signaling URL
-    const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    const serverUrl = isLocalhost ? 'http://localhost:3010' : undefined;
+    // Determine the signaling URL from environment variables
+    const serverUrl = process.env.NEXT_PUBLIC_SIGNALING_SERVER || 'http://localhost:3010';
 
     let timeoutId: NodeJS.Timeout;
     let localSocket: Socket | null = null;
